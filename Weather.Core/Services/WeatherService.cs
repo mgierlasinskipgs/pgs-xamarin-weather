@@ -3,7 +3,7 @@ using Weather.Core.Models;
 
 namespace Weather.Core.Services
 {
-    public class WeatherService
+    public class WeatherService : IWeatherService
     {
         public Task<WeatherData> GetCurrentWeather(string city)
         {
