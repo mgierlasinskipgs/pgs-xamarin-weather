@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MvvmCross" Version="6.2.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Weather.Api\Weather.Api.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 </Project>

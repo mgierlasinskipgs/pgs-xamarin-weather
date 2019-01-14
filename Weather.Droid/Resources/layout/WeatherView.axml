@@ -34,4 +34,10 @@
 		android:layout_height="wrap_content"
 		android:textSize="24dp"
 		local:MvxBind="Text Temperature" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:textColor="@color/errorMessage"
+		local:MvxBind="Text ErrorMessage" />
 </LinearLayout>
