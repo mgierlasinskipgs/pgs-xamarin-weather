@@ -1,0 +1,51 @@
+﻿
+using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Views;
+using System;
+using Weather.Core.ViewModels;
+
+namespace Blank.Views
+{
+    public partial class WeatherView : MvxViewController<WeatherViewModel>
+    {
+        public WeatherView(IntPtr handle) : base(handle)
+        {
+        }
+
+        public override void DidReceiveMemoryWarning()
+        {
+            // Releases the view if it doesn't have a superview.
+            base.DidReceiveMemoryWarning();
+
+            // Release any cached data, images, etc that aren't in use.
+        }
+        
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            var set = this.CreateBindingSet<WeatherView, WeatherViewModel>();
+            set.Apply();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+        }
+    }
+}
