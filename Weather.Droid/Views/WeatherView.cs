@@ -5,7 +5,7 @@ using Weather.Core.ViewModels;
 
 namespace Weather.Droid.Views
 {
-    [Activity(Label = "Weather App", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class WeatherView : MvxActivity<WeatherViewModel>
     {
         protected override void OnCreate(Bundle bundle)

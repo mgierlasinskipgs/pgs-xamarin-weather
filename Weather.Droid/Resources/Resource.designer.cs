@@ -2266,26 +2266,26 @@ namespace Weather.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02006a
-			public const int avd_hide_password_1 = 2130837610;
-			
 			// aapt resource value: 0x7f02006b
-			public const int avd_hide_password_2 = 2130837611;
+			public const int avd_hide_password_1 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int avd_hide_password_3 = 2130837612;
+			public const int avd_hide_password_2 = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int avd_hide_password_3 = 2130837613;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02006d
-			public const int avd_show_password_1 = 2130837613;
-			
 			// aapt resource value: 0x7f02006e
-			public const int avd_show_password_2 = 2130837614;
+			public const int avd_show_password_1 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int avd_show_password_3 = 2130837615;
+			public const int avd_show_password_2 = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int avd_show_password_3 = 2130837616;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2332,11 +2332,11 @@ namespace Weather.Droid
 			// aapt resource value: 0x7f020063
 			public const int notification_icon_background = 2130837603;
 			
-			// aapt resource value: 0x7f020068
-			public const int notification_template_icon_bg = 2130837608;
-			
 			// aapt resource value: 0x7f020069
-			public const int notification_template_icon_low_bg = 2130837609;
+			public const int notification_template_icon_bg = 2130837609;
+			
+			// aapt resource value: 0x7f02006a
+			public const int notification_template_icon_low_bg = 2130837610;
 			
 			// aapt resource value: 0x7f020064
 			public const int notification_tile_bg = 2130837604;
@@ -2345,10 +2345,13 @@ namespace Weather.Droid
 			public const int notify_panel_notification_icon_bg = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int tooltip_frame_dark = 2130837606;
+			public const int Splash = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int tooltip_frame_light = 2130837607;
+			public const int tooltip_frame_dark = 2130837607;
+			
+			// aapt resource value: 0x7f020068
+			public const int tooltip_frame_light = 2130837608;
 			
 			static Drawable()
 			{
@@ -3140,13 +3143,16 @@ namespace Weather.Droid
 			public const int select_dialog_singlechoice_material = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int support_simple_spinner_dropdown_item = 2130968636;
+			public const int SplashScreen = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int tooltip = 2130968637;
+			public const int support_simple_spinner_dropdown_item = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int WeatherView = 2130968638;
+			public const int tooltip = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int WeatherView = 2130968639;
 			
 			static Layout()
 			{
@@ -3353,17 +3359,17 @@ namespace Weather.Droid
 			// aapt resource value: 0x7f0a015f
 			public const int Animation_Design_BottomSheetDialog = 2131362143;
 			
-			// aapt resource value: 0x7f0a0180
-			public const int AppTheme = 2131362176;
-			
-			// aapt resource value: 0x7f0a0182
-			public const int AppTheme_AppBarOverlay = 2131362178;
-			
 			// aapt resource value: 0x7f0a0181
-			public const int AppTheme_NoActionBar = 2131362177;
+			public const int AppTheme = 2131362177;
 			
 			// aapt resource value: 0x7f0a0183
-			public const int AppTheme_PopupOverlay = 2131362179;
+			public const int AppTheme_AppBarOverlay = 2131362179;
+			
+			// aapt resource value: 0x7f0a0182
+			public const int AppTheme_NoActionBar = 2131362178;
+			
+			// aapt resource value: 0x7f0a0184
+			public const int AppTheme_PopupOverlay = 2131362180;
 			
 			// aapt resource value: 0x7f0a009a
 			public const int Base_AlertDialog_AppCompat = 2131361946;
@@ -4222,6 +4228,9 @@ namespace Weather.Droid
 			
 			// aapt resource value: 0x7f0a016e
 			public const int Theme_Design_NoActionBar = 2131362158;
+			
+			// aapt resource value: 0x7f0a0180
+			public const int Theme_Splash = 2131362176;
 			
 			// aapt resource value: 0x7f0a0107
 			public const int ThemeOverlay_AppCompat = 2131362055;

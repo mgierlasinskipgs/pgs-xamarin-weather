@@ -4,8 +4,34 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+	<EditText 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:hint="City name"
+		local:MvxBind="Text CityName" />
+	<Button 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:text="Show weather" 
+		local:MvxBind="Click ShowCurrentWeatherCommand"/>
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="City name" />
+		android:layout_marginTop="10dp"
+		android:text="Description" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="24dp"
+		local:MvxBind="Text Description" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="Temperature" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="24dp"
+		local:MvxBind="Text Temperature" />
 </LinearLayout>

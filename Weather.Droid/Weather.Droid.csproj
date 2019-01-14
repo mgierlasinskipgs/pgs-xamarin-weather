@@ -57,10 +57,10 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\WeatherView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +113,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\WeatherView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\SplashScreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
