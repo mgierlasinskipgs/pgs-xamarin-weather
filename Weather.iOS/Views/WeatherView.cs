@@ -2,6 +2,7 @@
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Views;
 using System;
+using UIKit;
 using Weather.Core.ViewModels;
 
 namespace Blank.Views
@@ -30,9 +31,10 @@ namespace Blank.Views
             set.Bind(searchButton).To(vm => vm.SearchCommand);
             set.Bind(headerLabel).To(vm => vm.CityName);
             set.Bind(descriptionLabel).To(vm => vm.Description);
+            set.Bind(imageLabel).To(vm => vm.Icon).WithConversion("IconConverter");
             set.Bind(temperatureLabel).To(vm => vm.Temperature);
             set.Bind(errorLabel).To(vm => vm.ErrorMessage);
-
+            
             set.Bind(weatherContainer)
                 .For("Visibility")
                 .To(vm => vm.IsWeatherVisible)
@@ -41,6 +43,7 @@ namespace Blank.Views
             set.Apply();
         }
 
+        
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);

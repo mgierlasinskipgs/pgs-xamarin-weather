@@ -61,13 +61,33 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\IconConverter.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Setup.cs" />
     <Compile Include="Views\WeatherView.cs" />
     <Compile Include="Views\WeatherView.designer.cs">
       <DependentUpon>WeatherView.cs</DependentUpon>
     </Compile>
+    <BundleResource Include="Resources\ic_01d.png" />
+    <BundleResource Include="Resources\ic_01n.png" />
+    <BundleResource Include="Resources\ic_02d.png" />
+    <BundleResource Include="Resources\ic_02n.png" />
+    <BundleResource Include="Resources\ic_03d.png" />
+    <BundleResource Include="Resources\ic_03n.png" />
+    <BundleResource Include="Resources\ic_04d.png" />
+    <BundleResource Include="Resources\ic_04n.png" />
+    <BundleResource Include="Resources\ic_09d.png" />
+    <BundleResource Include="Resources\ic_09n.png" />
+    <BundleResource Include="Resources\ic_10d.png" />
+    <BundleResource Include="Resources\ic_10n.png" />
+    <BundleResource Include="Resources\ic_11d.png" />
+    <BundleResource Include="Resources\ic_11n.png" />
+    <BundleResource Include="Resources\ic_13d.png" />
+    <BundleResource Include="Resources\ic_13n.png" />
+    <BundleResource Include="Resources\ic_50d.png" />
+    <BundleResource Include="Resources\ic_50n.png" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Entitlements.plist" />
@@ -134,9 +154,7 @@
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Weather.Core\Weather.Core.csproj">
       <Project>{d11471eb-ea6f-46e5-8cda-a23219d66e16}</Project>
