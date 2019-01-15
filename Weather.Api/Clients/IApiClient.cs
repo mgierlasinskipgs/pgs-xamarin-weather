@@ -5,6 +5,6 @@ namespace Weather.Api.Clients
 {
     public interface IApiClient
     {
-        Task<CurrentWeather> GetCurrentWeather(string cityName);
+        Task<CurrentWeather> GetCurrentWeather(string searchQuery, string units);
     }
 }

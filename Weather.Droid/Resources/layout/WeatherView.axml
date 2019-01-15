@@ -7,37 +7,68 @@
 	<EditText 
 		android:layout_width="match_parent" 
 		android:layout_height="wrap_content" 
-		android:hint="City name"
-		local:MvxBind="Text CityName" />
+		android:hint="Enter city name"
+		android:layout_margin="10dp"
+		local:MvxBind="Text SearchQuery" />
 	<Button 
 		android:layout_width="match_parent" 
 		android:layout_height="wrap_content" 
 		android:text="Show weather" 
-		local:MvxBind="Click ShowCurrentWeatherCommand"/>
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		local:MvxBind="Click SearchCommand"/>
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginTop="40dp"
+		android:layout_marginBottom="20dp">
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			local:MvxBind="Visibility Visibility(IsWeatherVisible)">
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="24dp"
+				android:text="City Name"
+				android:gravity="center"
+				local:MvxBind="Text CityName" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="24dp"
+				android:text="Description"
+				android:gravity="center"
+				local:MvxBind="Text Description" />
+			<ImageView
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_gravity="center_horizontal"
+				android:src="@drawable/icon" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="24dp"
+				android:text="20 °C"
+				android:gravity="center"
+				local:MvxBind="Text Temperature" />
+		</LinearLayout>
+		<ProgressBar 
+			android:layout_width="50dp"
+			android:layout_height="50dp" 
+			android:layout_margin="20dp"
+			android:layout_gravity="center_horizontal" 
+			local:MvxBind="Visibility Visibility(IsLoading)" />
+	</FrameLayout>
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
-		android:text="Description" />
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:textSize="24dp"
-		local:MvxBind="Text Description" />
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
-		android:text="Temperature" />
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:textSize="24dp"
-		local:MvxBind="Text Temperature" />
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
+		android:layout_margin="10dp"
+		android:gravity="center"
 		android:textColor="@color/errorMessage"
+		android:text="Error message"
 		local:MvxBind="Text ErrorMessage" />
 </LinearLayout>

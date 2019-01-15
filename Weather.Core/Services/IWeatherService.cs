@@ -5,6 +5,6 @@ namespace Weather.Core.Services
 {
     public interface IWeatherService
     {
-        Task<WeatherData> GetCurrentWeather(string city);
+        Task<WeatherData> GetCurrentWeather(string searchQuery, Units units);
     }
 }

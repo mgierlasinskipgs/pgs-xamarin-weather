@@ -14,9 +14,9 @@ namespace Weather.Core.Services
             _apiClient = apiClient;
         }
 
-        public async Task<WeatherData> GetCurrentWeather(string city)
+        public async Task<WeatherData> GetCurrentWeather(string searchQuery, Units units)
         {
-            var currentWeather = await _apiClient.GetCurrentWeather(city);
+            var currentWeather = await _apiClient.GetCurrentWeather(searchQuery, GetUnitsValue(units));
 
             var data = new WeatherData
             {
@@ -32,6 +32,16 @@ namespace Weather.Core.Services
             }
             
             return data;
+        }
+
+        private string GetUnitsValue(Units units)
+        {
+            switch (units)
+            {
+                case Units.Celsius: return "metric";
+                case Units.Fahrenheit: return "imperial";
+                default: return string.Empty;
+            }
         }
     }
 }

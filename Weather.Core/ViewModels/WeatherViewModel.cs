@@ -4,6 +4,7 @@ using MvvmCross.ViewModels;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Weather.Core.Models;
 using Weather.Core.Services;
 
 namespace Weather.Core.ViewModels
@@ -39,9 +40,9 @@ namespace Weather.Core.ViewModels
             set => SetProperty(ref _description, value);
         }
         
-        private double _temperature;
+        private string _temperature;
 
-        public double Temperature
+        public string Temperature
         {
             get => _temperature;
             set => SetProperty(ref _temperature, value);
@@ -55,6 +56,22 @@ namespace Weather.Core.ViewModels
             set => SetProperty(ref _errorMessage, value);
         }
 
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
+
+        private bool _isWeatherVisible;
+
+        public bool IsWeatherVisible
+        {
+            get => _isWeatherVisible;
+            set => SetProperty(ref _isWeatherVisible, value);
+        }
+
         public WeatherViewModel(IWeatherService weatherService, IMvxLog log)
         {
             _weatherService = weatherService;
@@ -66,19 +83,28 @@ namespace Weather.Core.ViewModels
         private async Task SearchAction()
         {
             ErrorMessage = string.Empty;
+            IsLoading = true;
+            IsWeatherVisible = false;
 
             try
             {
-                var weatherData = await _weatherService.GetCurrentWeather(SearchQuery);
+                var weatherData = await _weatherService.GetCurrentWeather(SearchQuery, Units.Celsius);
 
                 CityName = weatherData.CityName;
                 Description = weatherData.Description;
-                Temperature = weatherData.Temperature;
+                Temperature = $"{weatherData.Temperature} °C";
+
+                IsWeatherVisible = true;
             }
             catch (Exception e)
             {
                 _log.Error(e, "Error when trying to get weather data");
                 ErrorMessage = e.Message;
+            }
+            finally
+            {
+                IsLoading = false;
+                SearchQuery = string.Empty;
             }
         }
     }

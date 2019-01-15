@@ -12,9 +12,9 @@ namespace Weather.Api.Clients
 
         private static readonly HttpClient _client = new HttpClient();
 
-        public async Task<CurrentWeather> GetCurrentWeather(string cityName)
+        public async Task<CurrentWeather> GetCurrentWeather(string searchQuery, string units)
         {
-            var url = $"{BaseUrl}?q={cityName}&APPID={ApiKey}";
+            var url = $"{BaseUrl}?q={searchQuery}&units={units}&APPID={ApiKey}";
 
             var response = await _client.GetAsync(url);
             response.EnsureSuccessStatusCode();
