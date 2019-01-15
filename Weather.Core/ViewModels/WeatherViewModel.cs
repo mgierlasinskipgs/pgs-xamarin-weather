@@ -3,7 +3,6 @@ using MvvmCross.Logging;
 using MvvmCross.ViewModels;
 using System;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Weather.Core.Models;
 using Weather.Core.Services;
 
@@ -14,14 +13,20 @@ namespace Weather.Core.ViewModels
         private readonly IWeatherService _weatherService;
         private readonly IMvxLog _log;
 
-        public ICommand SearchCommand { get; set; }
+        public IMvxCommand SearchCommand { get; set; }
 
         private string _searchQuery;
 
         public string SearchQuery
         {
             get => _searchQuery;
-            set => SetProperty(ref _searchQuery, value);
+            set
+            {
+                if (SetProperty(ref _searchQuery, value))
+                {
+                    SearchCommand.RaiseCanExecuteChanged();
+                }
+            }
         }
 
         private string _cityName;
@@ -39,7 +44,15 @@ namespace Weather.Core.ViewModels
             get => _description;
             set => SetProperty(ref _description, value);
         }
-        
+
+        private string _icon;
+
+        public string Icon
+        {
+            get => _icon;
+            set => SetProperty(ref _icon, value);
+        }
+
         private string _temperature;
 
         public string Temperature
@@ -77,7 +90,7 @@ namespace Weather.Core.ViewModels
             _weatherService = weatherService;
             _log = log;
 
-            SearchCommand = new MvxAsyncCommand(SearchAction);
+            SearchCommand = new MvxAsyncCommand(SearchAction, () => !string.IsNullOrWhiteSpace(SearchQuery));
         }
 
         private async Task SearchAction()
@@ -92,6 +105,7 @@ namespace Weather.Core.ViewModels
 
                 CityName = weatherData.CityName;
                 Description = weatherData.Description;
+                Icon = $"ic_{weatherData.Icon}";
                 Temperature = $"{weatherData.Temperature} °C";
 
                 IsWeatherVisible = true;

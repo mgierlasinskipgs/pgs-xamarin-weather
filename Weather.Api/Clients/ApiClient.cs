@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Models;
@@ -17,10 +19,21 @@ namespace Weather.Api.Clients
             var url = $"{BaseUrl}?q={searchQuery}&units={units}&APPID={ApiKey}";
 
             var response = await _client.GetAsync(url);
+            
+            HandleStatusCode(searchQuery, response);
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<CurrentWeather>(json);
+        }
+
+        private void HandleStatusCode(string searchQuery, HttpResponseMessage response)
+        {
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.NotFound:
+                    throw new Exception($"Weather for city {searchQuery} not found.");
+            }
         }
     }
 }
