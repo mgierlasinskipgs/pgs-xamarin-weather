@@ -6,7 +6,7 @@ namespace Weather.Droid
 {
     [Activity(
         MainLauncher = true,
-        Theme = "@style/Theme.Splash",
+        Theme = "@style/SplashScreen",
         NoHistory = true,
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashScreen : MvxSplashScreenActivity
