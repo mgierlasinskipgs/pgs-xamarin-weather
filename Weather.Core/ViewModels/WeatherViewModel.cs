@@ -69,7 +69,7 @@ namespace Weather.Core.ViewModels
 
             try
             {
-                var weatherData = await _weatherService.GetCurrentWeather(CityName);
+                var weatherData = await _weatherService.GetCurrentWeather(SearchQuery);
 
                 CityName = weatherData.CityName;
                 Description = weatherData.Description;

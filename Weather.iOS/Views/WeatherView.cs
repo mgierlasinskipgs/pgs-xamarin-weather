@@ -26,7 +26,7 @@ namespace Blank.Views
             base.ViewDidLoad();
 
             var set = this.CreateBindingSet<WeatherView, WeatherViewModel>();
-            set.Bind(searchTextField).To(vm => vm.CityName);
+            set.Bind(searchTextField).To(vm => vm.SearchQuery);
             set.Bind(searchButton).To(vm => vm.SearchCommand);
             set.Bind(headerLabel).To(vm => vm.CityName);
             set.Bind(descriptionLabel).To(vm => vm.Description);
