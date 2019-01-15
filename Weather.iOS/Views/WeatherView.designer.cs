@@ -41,6 +41,10 @@ namespace Blank.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel temperatureLabel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView weatherContainer { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (descriptionLabel != null) {
@@ -76,6 +80,11 @@ namespace Blank.Views
             if (temperatureLabel != null) {
                 temperatureLabel.Dispose ();
                 temperatureLabel = null;
+            }
+
+            if (weatherContainer != null) {
+                weatherContainer.Dispose ();
+                weatherContainer = null;
             }
         }
     }
