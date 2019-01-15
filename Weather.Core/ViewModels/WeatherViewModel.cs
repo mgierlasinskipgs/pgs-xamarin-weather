@@ -13,7 +13,15 @@ namespace Weather.Core.ViewModels
         private readonly IWeatherService _weatherService;
         private readonly IMvxLog _log;
 
-        public ICommand ShowCurrentWeatherCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
+
+        private string _searchQuery;
+
+        public string SearchQuery
+        {
+            get => _searchQuery;
+            set => SetProperty(ref _searchQuery, value);
+        }
 
         private string _cityName;
 
@@ -52,10 +60,10 @@ namespace Weather.Core.ViewModels
             _weatherService = weatherService;
             _log = log;
 
-            ShowCurrentWeatherCommand = new MvxAsyncCommand(ShowCurrentWeatherAction);
+            SearchCommand = new MvxAsyncCommand(SearchAction);
         }
 
-        private async Task ShowCurrentWeatherAction()
+        private async Task SearchAction()
         {
             ErrorMessage = string.Empty;
 
@@ -63,6 +71,7 @@ namespace Weather.Core.ViewModels
             {
                 var weatherData = await _weatherService.GetCurrentWeather(CityName);
 
+                CityName = weatherData.CityName;
                 Description = weatherData.Description;
                 Temperature = weatherData.Temperature;
             }

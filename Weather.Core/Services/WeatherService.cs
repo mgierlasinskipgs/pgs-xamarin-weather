@@ -20,14 +20,17 @@ namespace Weather.Core.Services
 
             var data = new WeatherData
             {
+                CityName = currentWeather.Name,
                 Temperature = currentWeather.Main?.Temp ?? 0
             };
 
-            if (currentWeather.Weather != null)
+            var weather = currentWeather.Weather?.FirstOrDefault();
+            if (weather != null)
             {
-                data.Description = string.Join(" ", currentWeather.Weather.Select(x => x.Description));
+                data.Description = weather.Main;
+                data.Icon = weather.Icon;
             }
-
+            
             return data;
         }
     }
