@@ -32,6 +32,12 @@ namespace Blank.Views
             set.Bind(descriptionLabel).To(vm => vm.Description);
             set.Bind(temperatureLabel).To(vm => vm.Temperature);
             set.Bind(errorLabel).To(vm => vm.ErrorMessage);
+
+            set.Bind(weatherContainer)
+                .For("Visibility")
+                .To(vm => vm.IsWeatherVisible)
+                .WithConversion("Visibility");
+            
             set.Apply();
         }
 
