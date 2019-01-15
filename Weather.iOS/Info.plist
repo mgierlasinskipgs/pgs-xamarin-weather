@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>Weather.iOS</string>
+	<string>Weather App</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.companyname.Weather.iOS</string>
 	<key>CFBundleShortVersionString</key>

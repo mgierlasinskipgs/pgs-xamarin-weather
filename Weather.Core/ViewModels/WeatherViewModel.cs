@@ -112,8 +112,8 @@ namespace Weather.Core.ViewModels
             }
             catch (Exception e)
             {
-                _log.Error(e, "Error when trying to get weather data");
                 ErrorMessage = e.Message;
+                _log.Error(e, "Error when trying to get weather data");
             }
             finally
             {

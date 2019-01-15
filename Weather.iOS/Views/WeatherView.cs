@@ -2,7 +2,6 @@
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Views;
 using System;
-using UIKit;
 using Weather.Core.ViewModels;
 
 namespace Blank.Views
@@ -26,6 +25,8 @@ namespace Blank.Views
         {
             base.ViewDidLoad();
 
+            activityIndicator.StartAnimating();
+
             var set = this.CreateBindingSet<WeatherView, WeatherViewModel>();
             set.Bind(searchTextField).To(vm => vm.SearchQuery);
             set.Bind(searchButton).To(vm => vm.SearchCommand);
@@ -35,14 +36,33 @@ namespace Blank.Views
             set.Bind(temperatureLabel).To(vm => vm.Temperature);
             set.Bind(errorLabel).To(vm => vm.ErrorMessage);
             
-            set.Bind(weatherContainer)
+            set.Bind(headerLabel)
                 .For("Visibility")
                 .To(vm => vm.IsWeatherVisible)
                 .WithConversion("Visibility");
-            
+
+            set.Bind(descriptionLabel)
+                .For("Visibility")
+                .To(vm => vm.IsWeatherVisible)
+                .WithConversion("Visibility");
+
+            set.Bind(imageLabel)
+                .For("Visibility")
+                .To(vm => vm.IsWeatherVisible)
+                .WithConversion("Visibility");
+
+            set.Bind(temperatureLabel)
+                .For("Visibility")
+                .To(vm => vm.IsWeatherVisible)
+                .WithConversion("Visibility");
+
+            set.Bind(activityIndicator)
+                .For("Visibility")
+                .To(vm => vm.IsLoading)
+                .WithConversion("Visibility");
+
             set.Apply();
         }
-
         
         public override void ViewWillAppear(bool animated)
         {

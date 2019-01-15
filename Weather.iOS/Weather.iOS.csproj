@@ -88,6 +88,7 @@
     <BundleResource Include="Resources\ic_13n.png" />
     <BundleResource Include="Resources\ic_50d.png" />
     <BundleResource Include="Resources\ic_50n.png" />
+    <BundleResource Include="Resources\LaunchIcon.png" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Entitlements.plist" />

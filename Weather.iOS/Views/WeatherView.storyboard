@@ -1,73 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="222">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="222">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Weather View-->
         <scene sceneID="221">
             <objects>
-                <viewController storyboardIdentifier="WeatherView" id="222" customClass="WeatherView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherView" id="222" customClass="WeatherView" sceneMemberID="viewController" title="Weather App">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="219"/>
                         <viewControllerLayoutGuide type="bottom" id="220"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="223">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter city name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="227">
-                                <rect key="frame" x="36" y="40" width="303" height="30"/>
+                                <rect key="frame" x="40" y="40" width="334" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="234">
-                                <rect key="frame" x="36" y="80" width="303" height="30"/>
+                                <rect key="frame" x="40" y="80" width="334" height="30"/>
                                 <state key="normal" title="Show weather"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="249">
-                                <rect key="frame" x="36" y="453" width="303" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="249">
+                                <rect key="frame" x="40" y="266" width="334" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1545">
-                                <rect key="frame" x="38" y="146" width="297" height="266"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather for London" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="241">
-                                        <rect key="frame" x="8" y="8" width="279" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dizzy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246">
-                                        <rect key="frame" x="8" y="46" width="281" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1297">
-                                        <rect key="frame" x="68" y="84" width="161" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="248">
-                                        <rect key="frame" x="8" y="225" width="279" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="241">
+                                <rect key="frame" x="81" y="170" width="250" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dizzy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246" misplaced="YES">
+                                <rect key="frame" x="81" y="208" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1297">
+                                <rect key="frame" x="176" y="246" width="60" height="60"/>
+                                <constraints>
+                                    <constraint id="4108" firstAttribute="height" constant="60"/>
+                                    <constraint id="4109" firstAttribute="width" constant="60"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="248">
+                                <rect key="frame" x="106" y="314" width="200" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1794">
+                                <rect key="frame" x="196" y="175" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -77,17 +68,34 @@
                             <constraint firstItem="234" firstAttribute="leading" secondItem="223" secondAttribute="leadingMargin" constant="20" id="491"/>
                             <constraint firstAttribute="trailingMargin" secondItem="234" secondAttribute="trailing" constant="20" id="492"/>
                             <constraint firstItem="234" firstAttribute="top" secondItem="227" secondAttribute="bottom" constant="10" id="493"/>
+                            <constraint id="1795" firstItem="1794" firstAttribute="leading" secondItem="223" secondAttribute="leadingMargin" constant="176"/>
+                            <constraint id="1797" firstAttribute="trailingMargin" secondItem="1794" secondAttribute="trailing" constant="178"/>
+                            <constraint id="2055" firstItem="241" firstAttribute="leading" secondItem="223" secondAttribute="leadingMargin" constant="61"/>
+                            <constraint id="2057" firstAttribute="trailingMargin" secondItem="241" secondAttribute="trailing" constant="63"/>
+                            <constraint id="2058" firstItem="246" firstAttribute="leading" secondItem="223" secondAttribute="leadingMargin" constant="61"/>
+                            <constraint id="2059" firstAttribute="trailingMargin" secondItem="246" secondAttribute="trailing" constant="63"/>
+                            <constraint id="2060" firstItem="246" firstAttribute="top" secondItem="234" secondAttribute="bottom" constant="98"/>
+                            <constraint id="2067" firstItem="249" firstAttribute="leading" secondItem="223" secondAttribute="leadingMargin" constant="20"/>
+                            <constraint id="2068" firstAttribute="trailingMargin" secondItem="249" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2069" firstItem="249" firstAttribute="top" secondItem="234" secondAttribute="bottom" constant="156"/>
+                            <constraint id="2354" firstItem="1794" firstAttribute="top" secondItem="234" secondAttribute="bottom" constant="65"/>
+                            <constraint id="2639" firstItem="241" firstAttribute="top" secondItem="234" secondAttribute="bottom" constant="60"/>
+                            <constraint id="3497" firstItem="248" firstAttribute="leading" secondItem="223" secondAttribute="leadingMargin" constant="86"/>
+                            <constraint id="3498" firstAttribute="trailingMargin" secondItem="248" secondAttribute="trailing" constant="88"/>
+                            <constraint id="3499" firstItem="248" firstAttribute="top" secondItem="234" secondAttribute="bottom" constant="204"/>
+                            <constraint id="3786" firstAttribute="centerX" secondItem="1297" secondAttribute="centerX" constant="1"/>
+                            <constraint id="4107" firstItem="1297" firstAttribute="top" secondItem="234" secondAttribute="bottom" constant="136"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="246" id="name-outlet-246"/>
                         <outlet property="errorLabel" destination="249" id="name-outlet-249"/>
-                        <outlet property="headerLabel" destination="241" id="name-outlet-241"/>
-                        <outlet property="imageLabel" destination="1297" id="name-outlet-1297"/>
                         <outlet property="searchButton" destination="234" id="name-outlet-234"/>
                         <outlet property="searchTextField" destination="227" id="name-outlet-227"/>
+                        <outlet property="activityIndicator" destination="1794" id="name-outlet-1794"/>
+                        <outlet property="headerLabel" destination="241" id="name-outlet-241"/>
+                        <outlet property="descriptionLabel" destination="246" id="name-outlet-246"/>
+                        <outlet property="imageLabel" destination="1297" id="name-outlet-1297"/>
                         <outlet property="temperatureLabel" destination="248" id="name-outlet-248"/>
-                        <outlet property="weatherContainer" destination="1545" id="name-outlet-1545"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="224" userLabel="First Responder" sceneMemberID="firstResponder"/>
