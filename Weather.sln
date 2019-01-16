@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.iOS", "Weather.iOS\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.UnitTests", "Weather.UnitTests\Weather.UnitTests.csproj", "{742BCD82-521E-4912-93E9-DF8B77424978}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8AFDB333-F029-428F-BD50-FB1980D4EC84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native", "Native", "{6A581CD0-302F-43F2-91AE-992C4A3CC0DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6CE7044A-7DCD-4A10-B189-D824A400F365}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +96,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D11471EB-EA6F-46E5-8CDA-A23219D66E16} = {8AFDB333-F029-428F-BD50-FB1980D4EC84}
+		{3BC0AC7E-3B3B-4D3F-9CC0-B2BDECC460A6} = {6A581CD0-302F-43F2-91AE-992C4A3CC0DF}
+		{EAE12051-A52B-4AC0-BF3D-44870AE8EC5F} = {8AFDB333-F029-428F-BD50-FB1980D4EC84}
+		{80A96B52-6758-4BDB-B0B4-CEA4CA155C60} = {6A581CD0-302F-43F2-91AE-992C4A3CC0DF}
+		{742BCD82-521E-4912-93E9-DF8B77424978} = {6CE7044A-7DCD-4A10-B189-D824A400F365}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37E0FDCD-2445-433D-AE52-705C9ABBA37C}
