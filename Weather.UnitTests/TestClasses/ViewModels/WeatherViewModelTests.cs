@@ -7,6 +7,7 @@ using Weather.Core.Models;
 using Weather.Core.Services;
 using Weather.Core.ViewModels;
 using Xunit;
+using static Weather.Api.Resources.ErrorMessages;
 using static Weather.UnitTests.Concrete.HttpHelper;
 
 namespace Weather.UnitTests.TestClasses.ViewModels
@@ -58,7 +59,7 @@ namespace Weather.UnitTests.TestClasses.ViewModels
             await viewModel.SearchCommand.ExecuteAsync();
 
             // Assert
-            viewModel.ErrorMessage.Should().Be("Weather for city InvalidCity not found.");
+            viewModel.ErrorMessage.Should().Be(string.Format(NotFound, "InvalidCity"));
             viewModel.IsWeatherVisible.Should().BeFalse();
         }
 
@@ -76,7 +77,7 @@ namespace Weather.UnitTests.TestClasses.ViewModels
             await viewModel.SearchCommand.ExecuteAsync();
 
             // Assert
-            viewModel.ErrorMessage.Should().Be("Response has no content.");
+            viewModel.ErrorMessage.Should().Be(NoContent);
             viewModel.IsWeatherVisible.Should().BeFalse();
         }
 
