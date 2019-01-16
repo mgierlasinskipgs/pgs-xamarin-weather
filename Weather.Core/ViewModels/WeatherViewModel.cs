@@ -13,7 +13,7 @@ namespace Weather.Core.ViewModels
         private readonly IWeatherService _weatherService;
         private readonly IMvxLog _log;
 
-        public IMvxCommand SearchCommand { get; set; }
+        public MvxAsyncCommand SearchCommand { get; set; }
 
         private string _searchQuery;
 

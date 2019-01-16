@@ -1,17 +1,15 @@
 ﻿using AutoFixture;
 using AutoFixture.Xunit2;
 using FluentAssertions;
-using Moq;
-using Moq.Protected;
 using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using Weather.Api.Clients;
 using Weather.Api.Models;
 using Xunit;
+using static Weather.UnitTests.Concrete.HttpHelper;
 
 namespace Weather.UnitTests.TestClasses.Services
 {
@@ -24,7 +22,7 @@ namespace Weather.UnitTests.TestClasses.Services
         {
             // Arrange
             var fixture = new Fixture();
-            var handlerMock = GetHandlerMock(new HttpResponseMessage
+            var handlerMock = GetMessageHandlerForResponse(new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(JsonConvert.SerializeObject(fixture.Create<CurrentWeather>()))
@@ -48,7 +46,7 @@ namespace Weather.UnitTests.TestClasses.Services
         public async Task Calling_api_with_success_status_code_should_return_valid_dto_objects(CurrentWeather weatherData)
         {
             // Arrange
-            var handlerMock = GetHandlerMock(new HttpResponseMessage
+            var handlerMock = GetMessageHandlerForResponse(new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(JsonConvert.SerializeObject(weatherData))
@@ -74,7 +72,7 @@ namespace Weather.UnitTests.TestClasses.Services
         public void Calling_api_with_not_found_status_code_should_throw_exception()
         {
             // Arrange
-            var handlerMock = GetHandlerMock(new HttpResponseMessage { StatusCode = HttpStatusCode.NotFound });
+            var handlerMock = GetMessageHandlerForResponse(new HttpResponseMessage { StatusCode = HttpStatusCode.NotFound });
 
             var httpClient = new HttpClient(handlerMock.Object);
             var apiClient = new ApiClient(httpClient)
@@ -101,7 +99,7 @@ namespace Weather.UnitTests.TestClasses.Services
         public void Calling_api_with_no_content_should_throw_exception()
         {
             // Arrange
-            var handlerMock = GetHandlerMock(new HttpResponseMessage { StatusCode = HttpStatusCode.OK });
+            var handlerMock = GetMessageHandlerForResponse(new HttpResponseMessage { StatusCode = HttpStatusCode.OK });
 
             var httpClient = new HttpClient(handlerMock.Object);
             var apiClient = new ApiClient(httpClient)
@@ -122,31 +120,6 @@ namespace Weather.UnitTests.TestClasses.Services
                 x.Message == "Response has no content.");
 
             AssertApiWasCalled(handlerMock, new Uri("https://test.com/api/weather?q=London&units=metric&APPID=123"));
-        }
-
-        private Mock<HttpMessageHandler> GetHandlerMock(HttpResponseMessage resposne)
-        {
-            var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-            handlerMock
-                .Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync",
-                    ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(resposne)
-                .Verifiable();
-
-            return handlerMock;
-        }
-        
-        private void AssertApiWasCalled(Mock<HttpMessageHandler> handlerMock, Uri expectedUri)
-        {
-            handlerMock.Protected().Verify("SendAsync",
-                Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(req =>
-                        req.Method == HttpMethod.Get && 
-                        req.RequestUri == expectedUri),
-                ItExpr.IsAny<CancellationToken>()
-            );
         }
     }
 }
