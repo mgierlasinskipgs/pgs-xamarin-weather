@@ -8,6 +8,6 @@ namespace Weather.Api.Models
         public double Speed { get; set; }
 
         [JsonProperty("deg")]
-        public int Deg { get; set; }
+        public double Deg { get; set; }
     }
 }
