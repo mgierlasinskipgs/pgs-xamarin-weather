@@ -1,5 +1,6 @@
 ﻿using MvvmCross;
 using MvvmCross.ViewModels;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using Weather.Api.Clients;
 using Weather.Core.Services;
@@ -12,6 +13,7 @@ namespace Weather.Core
     {
         public override void Initialize()
         {
+            Mvx.IoCProvider.RegisterSingleton(() => new HttpClient());
             Mvx.IoCProvider.RegisterType<IApiClient, ApiClient>();
             Mvx.IoCProvider.RegisterType<IWeatherService, WeatherService>();
 

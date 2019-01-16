@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -9,30 +8,44 @@ namespace Weather.Api.Clients
 {
     public class ApiClient : IApiClient
     {
-        private const string BaseUrl = "https://api.openweathermap.org/data/2.5/weather";
-        private const string ApiKey = "b5dc472083eb21298b570b0fb9d9680d";
+        public string BaseUrl { get; set; } = "https://api.openweathermap.org/data/2.5/weather";
+        public string ApiKey { get; set; } = "b5dc472083eb21298b570b0fb9d9680d";
 
-        private static readonly HttpClient _client = new HttpClient();
+        private readonly HttpClient _client;
+
+        public ApiClient(HttpClient client)
+        {
+            _client = client;
+        }
 
         public async Task<CurrentWeather> GetCurrentWeather(string searchQuery, string units)
         {
             var url = $"{BaseUrl}?q={searchQuery}&units={units}&APPID={ApiKey}";
 
             var response = await _client.GetAsync(url);
-            
-            HandleStatusCode(searchQuery, response);
-            response.EnsureSuccessStatusCode();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApiException((int)response.StatusCode, GetErrorMessage(searchQuery, response));
+            }
+
+            if (response.Content == null)
+            {
+                throw new ApiException((int)HttpStatusCode.NoContent, "Response has no content.");
+            }
 
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<CurrentWeather>(json);
         }
-
-        private void HandleStatusCode(string searchQuery, HttpResponseMessage response)
+        
+        private string GetErrorMessage(string searchQuery, HttpResponseMessage response)
         {
             switch (response.StatusCode)
             {
                 case HttpStatusCode.NotFound:
-                    throw new Exception($"Weather for city {searchQuery} not found.");
+                    return $"Weather for city {searchQuery} not found.";
+                default:
+                    return response.ReasonPhrase;
             }
         }
     }
