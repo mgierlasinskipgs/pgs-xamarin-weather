@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Models;
+using Weather.Api.Resources;
 
 namespace Weather.Api.Clients
 {
@@ -31,7 +32,7 @@ namespace Weather.Api.Clients
 
             if (response.Content == null)
             {
-                throw new ApiException((int)HttpStatusCode.NoContent, "Response has no content.");
+                throw new ApiException((int)HttpStatusCode.NoContent, ErrorMessages.NoContent);
             }
 
             var json = await response.Content.ReadAsStringAsync();
@@ -43,7 +44,7 @@ namespace Weather.Api.Clients
             switch (response.StatusCode)
             {
                 case HttpStatusCode.NotFound:
-                    return $"Weather for city {searchQuery} not found.";
+                    return string.Format(ErrorMessages.NotFound, searchQuery);
                 default:
                     return response.ReasonPhrase;
             }

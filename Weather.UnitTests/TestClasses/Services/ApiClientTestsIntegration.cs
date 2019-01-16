@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Clients;
+using Weather.Api.Resources;
 using Xunit;
 
 namespace Weather.UnitTests.TestClasses.Services
@@ -45,7 +46,7 @@ namespace Weather.UnitTests.TestClasses.Services
             // Assert
             act.Should().Throw<ApiException>().Where(x =>
                 x.ErrorCode == (int)HttpStatusCode.NotFound &&
-                x.Message == "Weather for city NonExitingCity not found.");
+                x.Message == string.Format(ErrorMessages.NotFound, "NonExitingCity"));
         }
     }
 }

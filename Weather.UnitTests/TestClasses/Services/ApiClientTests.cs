@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Clients;
 using Weather.Api.Models;
+using Weather.Api.Resources;
 using Xunit;
 using static Weather.UnitTests.Concrete.HttpHelper;
 
@@ -90,7 +91,7 @@ namespace Weather.UnitTests.TestClasses.Services
             // Assert
             act.Should().Throw<ApiException>().Where(x => 
                 x.ErrorCode == (int)HttpStatusCode.NotFound && 
-                x.Message == "Weather for city InvalidCity not found.");
+                x.Message == string.Format(ErrorMessages.NotFound, "InvalidCity"));
 
             AssertApiWasCalled(handlerMock, new Uri("https://test.com/api/weather?q=InvalidCity&units=metric&APPID=123"));
         }
@@ -117,7 +118,7 @@ namespace Weather.UnitTests.TestClasses.Services
             // Assert
             act.Should().Throw<ApiException>().Where(x =>
                 x.ErrorCode == (int)HttpStatusCode.NoContent &&
-                x.Message == "Response has no content.");
+                x.Message == ErrorMessages.NoContent);
 
             AssertApiWasCalled(handlerMock, new Uri("https://test.com/api/weather?q=London&units=metric&APPID=123"));
         }
