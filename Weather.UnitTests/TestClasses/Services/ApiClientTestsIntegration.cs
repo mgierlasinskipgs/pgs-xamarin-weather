@@ -46,5 +46,24 @@ namespace Weather.UnitTests.TestClasses.Services
             // Assert
             act.Should().Throw<ApiException>().WithError(HttpStatusCode.NotFound, string.Format(NotFound, "NonExitingCity"));
         }
+
+        [Fact]
+        public void Calling_api_without_api_key_should_fail()
+        {
+            // Arrange
+            var apiClient = new ApiClient(_httpClient)
+            {
+                ApiKey = string.Empty
+            };
+
+            // Act
+            Func<Task> act = async () =>
+            {
+                var result = await apiClient.GetCurrentWeather("London", "metric");
+            };
+
+            // Assert
+            act.Should().Throw<ApiException>().WithError(HttpStatusCode.Unauthorized, "Unauthorized");
+        }
     }
 }

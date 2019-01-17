@@ -94,6 +94,34 @@ namespace Weather.UnitTests.TestClasses.Services
         }
 
         [Fact]
+        public void Calling_api_with_bad_request_status_code_should_throw_exception()
+        {
+            // Arrange
+            var handlerMock = GetMessageHandlerForResponse(new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                ReasonPhrase = "Invalid parameters"
+            });
+
+            var httpClient = new HttpClient(handlerMock.Object);
+            var apiClient = new ApiClient(httpClient)
+            {
+                BaseUrl = "https://test.com/api/weather",
+                ApiKey = "123"
+            };
+
+            // Act
+            Func<Task> act = async () =>
+            {
+                var result = await apiClient.GetCurrentWeather("London", "metric");
+            };
+
+            // Assert
+            act.Should().Throw<ApiException>().WithError(HttpStatusCode.BadRequest, "Invalid parameters");
+            handlerMock.ShouldBe().CalledOnce(new Uri("https://test.com/api/weather?q=London&units=metric&APPID=123"));
+        }
+
+        [Fact]
         public void Calling_api_with_no_content_should_throw_exception()
         {
             // Arrange
