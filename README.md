@@ -2,6 +2,12 @@
 
 Application written in Xamarin.Native. It can display weather information for given city from Open Weather service. Application is following MVVM pattern and was written using MvvmCross framework.
 
+## Build status
+
+ Platform | Status
+--- | ---
+Android | [![Build status](https://build.appcenter.ms/v0.1/apps/ebd634b0-8e90-4aaa-9aef-df3dab3d7dd1/branches/master/badge)](https://appcenter.ms)
+
 ## Project structure
 
 ### Weather.Api
