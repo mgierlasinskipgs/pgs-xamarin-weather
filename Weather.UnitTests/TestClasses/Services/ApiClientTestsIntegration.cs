@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Clients;
+using Weather.UnitTests.TestData;
 using Xunit;
 using static Weather.Api.Resources.ErrorMessages;
 
@@ -14,9 +15,7 @@ namespace Weather.UnitTests.TestClasses.Services
         private readonly HttpClient _httpClient = new HttpClient();
 
         [Theory]
-        [InlineData("London", "imperial")]
-        [InlineData("Norwich", "metric")]
-        [InlineData("Oxford", "")]
+        [MemberData(nameof(WeatherTestData.ValidSearchParameters), MemberType = typeof(WeatherTestData))]
         public async Task Calling_api_with_valid_parameters_should_succeed(string query, string units)
         {
             // Arrange

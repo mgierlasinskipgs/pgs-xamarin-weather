@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Clients;
 using Weather.Api.Models;
+using Weather.UnitTests.TestData;
 using Xunit;
 using static Weather.Api.Resources.ErrorMessages;
 using static Weather.UnitTests.Concrete.HttpHelper;
@@ -17,9 +18,8 @@ namespace Weather.UnitTests.TestClasses.Services
     public class ApiClientTests
     {
         [Theory]
-        [InlineData("London", "imperial", "123")]
-        [InlineData("Norwich", "metric", "456")]
-        public async Task Api_should_be_called_once_with_proper_url_and_parameters(string query, string units, string apiKey)
+        [MemberData(nameof(WeatherTestData.ValidSearchParameters), MemberType = typeof(WeatherTestData))]
+        public async Task Api_should_be_called_once_with_proper_url_and_parameters(string query, string units)
         {
             // Arrange
             var fixture = new Fixture();
@@ -33,14 +33,14 @@ namespace Weather.UnitTests.TestClasses.Services
             var apiClient = new ApiClient(httpClient)
             {
                 BaseUrl = "https://test.com/api/weather",
-                ApiKey = apiKey
+                ApiKey = "123"
             };
 
             // Act
             var result = await apiClient.GetCurrentWeather(query, units);
 
             // Assert
-            AssertApiWasCalled(handlerMock, new Uri($"https://test.com/api/weather?q={query}&units={units}&APPID={apiKey}"));
+            AssertApiWasCalled(handlerMock, new Uri($"https://test.com/api/weather?q={query}&units={units}&APPID=123"));
         }
 
         [Theory, AutoData]
