@@ -6,7 +6,7 @@ Application written in Xamarin.Native. It can display weather information for gi
 
 ### Weather.Api
 
-Communication with Open Wether API. Contains client class and DTO models. Code from this project is tested in Unit Tests.
+Communication with Open Weather API. Contains client class and DTO models. Code from this project is tested in Unit Tests.
 
 ### Weather.Core
 
@@ -19,6 +19,13 @@ Project for native Android application.
 ### Weather.iOS
 
 Project for native iOS application.
+
+### Weather.UITests
+
+Project with UI tests for Android. Tests are written in Xamarin UI test framework. There are 2 main directories in the project:
+
+- **Pages** - classes respresenting pages in application with element selectors and actions that can be performed
+- **Tests** - test scenarios
 
 ### Weather.UnitTests
 
