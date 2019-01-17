@@ -7,6 +7,7 @@ Application written in Xamarin.Native. It can display weather information for gi
  Platform | Status
 --- | ---
 Android | [![Build status](https://build.appcenter.ms/v0.1/apps/ebd634b0-8e90-4aaa-9aef-df3dab3d7dd1/branches/master/badge)](https://appcenter.ms)
+iOS | [![Build status](https://build.appcenter.ms/v0.1/apps/71680e42-5dca-416a-8f4a-a53e4be47217/branches/master/badge)](https://appcenter.ms)
 
 ## Project structure
 
