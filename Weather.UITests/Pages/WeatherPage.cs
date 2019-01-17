@@ -6,10 +6,10 @@ namespace Weather.UITests.Pages
 {
     public class WeatherPage : PageBase
     {
-        public Func<AppQuery, AppQuery> SearchEdit { get; } = e => e.Class("EditText");
-        public Func<AppQuery, AppQuery> SearchButton { get; } = e => e.Class("Button");
-        public Func<AppQuery, AppQuery> Icon { get; } = e => e.Class("ImageView");
-        public Func<AppQuery, AppQuery> ProgressBar { get; } = e => e.Class("ProgressBar");
+        public Func<AppQuery, AppQuery> SearchEdit => e => e.Class("EditText");
+        public Func<AppQuery, AppQuery> SearchButton => e => e.Class("Button");
+        public Func<AppQuery, AppQuery> Icon => e => e.Class("ImageView");
+        public Func<AppQuery, AppQuery> ProgressBar => e => e.Class("ProgressBar");
         
         public WeatherPage(IApp app) 
             : base(app)
