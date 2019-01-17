@@ -1,25 +1,30 @@
-﻿using Xamarin.UITest;
+﻿using System;
+using Xamarin.UITest;
+using Xamarin.UITest.Queries;
 
 namespace Weather.UITests.Pages
 {
-    public class WeatherPage
+    public class WeatherPage : PageBase
     {
-        private readonly IApp _app;
-
-        public WeatherPage(IApp app)
-        {
-            _app = app;
+        public Func<AppQuery, AppQuery> SearchEdit { get; } = e => e.Class("EditText");
+        public Func<AppQuery, AppQuery> SearchButton { get; } = e => e.Class("Button");
+        public Func<AppQuery, AppQuery> Icon { get; } = e => e.Class("ImageView");
+        public Func<AppQuery, AppQuery> ProgressBar { get; } = e => e.Class("ProgressBar");
+        
+        public WeatherPage(IApp app) 
+            : base(app)
+        {   
         }
 
         public WeatherPage EnterSearchQuery(string searchQuery)
         {
-            _app.EnterText(c => c.Class("EditText"), searchQuery);
+            App.EnterText(SearchEdit, searchQuery);
             return this;
         }
 
         public WeatherPage TapSearchButton()
         {
-            _app.Tap(c => c.Class("Button"));
+            App.Tap(SearchButton);
             return this;
         }
     }
