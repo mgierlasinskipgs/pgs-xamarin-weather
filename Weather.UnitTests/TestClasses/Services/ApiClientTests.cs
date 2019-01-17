@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Weather.Api.Clients;
 using Weather.Api.Models;
+using Weather.UnitTests.Assertions;
 using Weather.UnitTests.TestData;
 using Xunit;
 using static Weather.Api.Resources.ErrorMessages;
@@ -40,7 +41,7 @@ namespace Weather.UnitTests.TestClasses.Services
             var result = await apiClient.GetCurrentWeather(query, units);
 
             // Assert
-            AssertApiWasCalled(handlerMock, new Uri($"https://test.com/api/weather?q={query}&units={units}&APPID=123"));
+            handlerMock.ShouldBe().CalledOnce(new Uri($"https://test.com/api/weather?q={query}&units={units}&APPID=123"));
         }
 
         [Theory, AutoData]
@@ -65,8 +66,7 @@ namespace Weather.UnitTests.TestClasses.Services
 
             // Assert
             result.Should().BeEquivalentTo(weatherData);
-
-            AssertApiWasCalled(handlerMock, new Uri("https://test.com/api/weather?q=London&units=imperial&APPID=123"));
+            handlerMock.ShouldBe().CalledOnce(new Uri("https://test.com/api/weather?q=London&units=imperial&APPID=123"));
         }
 
         [Fact]
@@ -89,11 +89,8 @@ namespace Weather.UnitTests.TestClasses.Services
             };
 
             // Assert
-            act.Should().Throw<ApiException>().Where(x => 
-                x.ErrorCode == (int)HttpStatusCode.NotFound && 
-                x.Message == string.Format(NotFound, "InvalidCity"));
-
-            AssertApiWasCalled(handlerMock, new Uri("https://test.com/api/weather?q=InvalidCity&units=metric&APPID=123"));
+            act.Should().Throw<ApiException>().WithError(HttpStatusCode.NotFound, string.Format(NotFound, "InvalidCity"));
+            handlerMock.ShouldBe().CalledOnce(new Uri("https://test.com/api/weather?q=InvalidCity&units=metric&APPID=123"));
         }
 
         [Fact]
@@ -116,11 +113,8 @@ namespace Weather.UnitTests.TestClasses.Services
             };
 
             // Assert
-            act.Should().Throw<ApiException>().Where(x =>
-                x.ErrorCode == (int)HttpStatusCode.NoContent &&
-                x.Message == NoContent);
-
-            AssertApiWasCalled(handlerMock, new Uri("https://test.com/api/weather?q=London&units=metric&APPID=123"));
+            act.Should().Throw<ApiException>().WithError(HttpStatusCode.NoContent, NoContent);
+            handlerMock.ShouldBe().CalledOnce(new Uri("https://test.com/api/weather?q=London&units=metric&APPID=123"));
         }
     }
 }

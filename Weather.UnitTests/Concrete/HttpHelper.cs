@@ -1,6 +1,5 @@
 ﻿using Moq;
 using Moq.Protected;
-using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,17 +28,6 @@ namespace Weather.UnitTests.Concrete
                 .Verifiable();
 
             return handlerMock;
-        }
-
-        public static void AssertApiWasCalled(Mock<HttpMessageHandler> handlerMock, Uri expectedUri)
-        {
-            handlerMock.Protected().Verify("SendAsync",
-                Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(req =>
-                    req.Method == HttpMethod.Get &&
-                    req.RequestUri == expectedUri),
-                ItExpr.IsAny<CancellationToken>()
-            );
         }
     }
 }
