@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Views;
 using MvvmCross.Platforms.Android.Views;
 using Weather.Core.ViewModels;
 
@@ -11,9 +10,6 @@ namespace Weather.Droid.Views
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.Window.RequestFeature(WindowFeatures.ActionBar);
-            base.SetTheme(Resource.Style.AppTheme);
-
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.WeatherView);
         }
