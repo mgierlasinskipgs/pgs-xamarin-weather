@@ -9,7 +9,7 @@ using Weather.UnitTests.TestData;
 using Xunit;
 using static Weather.Api.Resources.ErrorMessages;
 
-namespace Weather.UnitTests.TestClasses.Services
+namespace Weather.UnitTests.TestClasses.Clients
 {
     public class ApiClientTestsIntegration
     {

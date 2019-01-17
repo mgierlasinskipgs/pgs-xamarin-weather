@@ -14,7 +14,7 @@ using Xunit;
 using static Weather.Api.Resources.ErrorMessages;
 using static Weather.UnitTests.Concrete.HttpHelper;
 
-namespace Weather.UnitTests.TestClasses.Services
+namespace Weather.UnitTests.TestClasses.Clients
 {
     public class ApiClientTests
     {
